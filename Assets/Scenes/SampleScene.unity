@@ -4920,6 +4920,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1810780307009810672, guid: 184450d7fd18e3742b0612f6901efe5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4650336335196203188, guid: 184450d7fd18e3742b0612f6901efe5e,
         type: 3}
       propertyPath: m_Mesh
@@ -4939,6 +4944,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650336335355336754, guid: 184450d7fd18e3742b0612f6901efe5e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650336335355336754, guid: 184450d7fd18e3742b0612f6901efe5e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4650336335412807318, guid: 184450d7fd18e3742b0612f6901efe5e,
         type: 3}
@@ -4979,6 +4994,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650336336052702770, guid: 184450d7fd18e3742b0612f6901efe5e,
+        type: 3}
+      propertyPath: trackedHandJoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650336336052702770, guid: 184450d7fd18e3742b0612f6901efe5e,
+        type: 3}
+      propertyPath: trackedHandness
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4650336336052702772, guid: 184450d7fd18e3742b0612f6901efe5e,
         type: 3}
@@ -5048,7 +5073,7 @@ PrefabInstance:
     - target: {fileID: 4650336336052702775, guid: 184450d7fd18e3742b0612f6901efe5e,
         type: 3}
       propertyPath: m_Name
-      value: HandMenu_Small
+      value: Left Hand Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 184450d7fd18e3742b0612f6901efe5e, type: 3}
@@ -28087,7 +28112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &6131017461105987006
 MeshRenderer:
   m_ObjectHideFlags: 0
