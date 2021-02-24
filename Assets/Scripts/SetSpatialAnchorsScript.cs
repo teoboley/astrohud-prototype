@@ -30,20 +30,24 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             Debug.Log("Set Spatial Anchors script started");
 
             // create session
+            Debug.Log("Creating Spatial Anchors session");
             if (CloudManager.Session == null)
             {
                 await CloudManager.CreateSessionAsync();
             }
             currentAnchorId = "";
             currentCloudAnchor = null;
+            Debug.Log("Spatial Anchors session created");
 
             // configure session
+            Debug.Log("Configuring Spatial Anchors session");
             ConfigureSession();
+            Debug.Log("Spatial Anchors session configured");
 
             // start session
+            Debug.Log("Starting Spatial Anchors session");
             await CloudManager.StartSessionAsync();
-
-
+            Debug.Log("Spatial Anchors session started");
         }
 
         public override void OnDestroy()
@@ -99,6 +103,49 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
                 rat += (Mathf.Min(createProgress, 1) * 0.9f);
                 spawnedObjectMat.color = Color.blue * rat;
             }
+        }
+
+        public void addAnchorAtGazePoint()
+        {
+            RaycastHit hit;
+            if (base.TryGazeHitTest(out hit)) {
+                Quaternion rotation = Quaternion.AngleAxis(0, Vector3.up);
+                GameObject newGameObject = base.SpawnNewAnchoredObject(hit.point, rotation);
+                newGameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
+                // base.SaveObjectAnchorToCloudAsync(newGameObject);
+            }
+        }
+
+        protected override async Task OnSaveCloudAnchorSuccessfulAsync(GameObject anchorObject)
+        {
+            await base.OnSaveCloudAnchorSuccessfulAsync(anchorObject);
+
+            anchorObject.GetComponent<MeshRenderer>().material.color = Color.yellow;
+
+            Debug.Log("Anchor created, yay!");
+
+            currentAnchorId = currentCloudAnchor.Identifier;
+
+            // Sanity check that the object is still where we expect
+            Pose anchorPose = Pose.identity;
+
+#if UNITY_ANDROID || UNITY_IOS
+            anchorPose = currentCloudAnchor.GetPose();
+#endif
+            // HoloLens: The position will be set based on the unityARUserAnchor that was located.
+
+            SpawnOrMoveCurrentAnchoredObject(anchorPose.position, anchorPose.rotation);
+
+            // currentAppState = AppState.DemoStepStopSession;
+        }
+
+        protected override void OnSaveCloudAnchorFailed(GameObject anchorObject, Exception exception)
+        {
+            base.OnSaveCloudAnchorFailed(anchorObject, exception);
+
+            anchorObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+            currentAnchorId = string.Empty;
         }
 
         //internal enum AppState
@@ -176,34 +223,6 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         //{
         //    return stateParams[currentAppState].StepColor;
         //}
-
-        protected override async Task OnSaveCloudAnchorSuccessfulAsync()
-        {
-            await base.OnSaveCloudAnchorSuccessfulAsync();
-
-            Debug.Log("Anchor created, yay!");
-
-            currentAnchorId = currentCloudAnchor.Identifier;
-
-            // Sanity check that the object is still where we expect
-            Pose anchorPose = Pose.identity;
-
-            #if UNITY_ANDROID || UNITY_IOS
-            anchorPose = currentCloudAnchor.GetPose();
-            #endif
-            // HoloLens: The position will be set based on the unityARUserAnchor that was located.
-
-            SpawnOrMoveCurrentAnchoredObject(anchorPose.position, anchorPose.rotation);
-
-            // currentAppState = AppState.DemoStepStopSession;
-        }
-
-        protected override void OnSaveCloudAnchorFailed(Exception exception)
-        {
-            base.OnSaveCloudAnchorFailed(exception);
-
-            currentAnchorId = string.Empty;
-        }
 
         //public async override Task AdvanceDemoAsync()
         //{

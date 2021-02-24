@@ -288,7 +288,7 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         /// Called when a cloud anchor is not saved successfully.
         /// </summary>
         /// <param name="exception">The exception.</param>
-        protected virtual void OnSaveCloudAnchorFailed(Exception exception)
+        protected virtual void OnSaveCloudAnchorFailed(GameObject anchorObject, Exception exception)
         {
             // we will block the next step to show the exception message in the UI.
             isErrorActive = true;
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         /// <summary>
         /// Called when a cloud anchor is saved successfully.
         /// </summary>
-        protected virtual Task OnSaveCloudAnchorSuccessfulAsync()
+        protected virtual Task OnSaveCloudAnchorSuccessfulAsync(GameObject anchorObject)
         {
             // To be overridden.
             return Task.CompletedTask;
@@ -314,8 +314,16 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         /// </summary>
         protected virtual async Task SaveCurrentObjectAnchorToCloudAsync()
         {
+            await SaveObjectAnchorToCloudAsync(spawnedObject);
+        }
+
+        /// <summary>
+        /// Saves an object anchor to the cloud.
+        /// </summary>
+        protected virtual async Task SaveObjectAnchorToCloudAsync(GameObject anchorObject)
+        {
             // Get the cloud-native anchor behavior
-            CloudNativeAnchor cna = spawnedObject.GetComponent<CloudNativeAnchor>();
+            CloudNativeAnchor cna = anchorObject.GetComponent<CloudNativeAnchor>();
 
             // If the cloud portion of the anchor hasn't been created yet, create it
             if (cna.CloudAnchor == null) { cna.NativeToCloud(); }
@@ -352,16 +360,16 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
                 {
                     // Await override, which may perform additional tasks
                     // such as storing the key in the AnchorExchanger
-                    await OnSaveCloudAnchorSuccessfulAsync();
+                    await OnSaveCloudAnchorSuccessfulAsync(anchorObject);
                 }
                 else
                 {
-                    OnSaveCloudAnchorFailed(new Exception("Failed to save, but no exception was thrown."));
+                    OnSaveCloudAnchorFailed(anchorObject, new Exception("Failed to save, but no exception was thrown."));
                 }
             }
             catch (Exception ex)
             {
-                OnSaveCloudAnchorFailed(ex);
+                OnSaveCloudAnchorFailed(anchorObject, ex);
             }
         }
 
@@ -379,9 +387,6 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             // Attach a cloud-native anchor behavior to help keep cloud
             // and native anchors in sync.
             newGameObject.AddComponent<CloudNativeAnchor>();
-
-            // Set the color
-            // newGameObject.GetComponent<MeshRenderer>().material.color = GetStepColor();
 
             // Return created object
             return newGameObject;
@@ -406,9 +411,6 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
                 cloudNativeAnchor.CloudToNative(cloudSpatialAnchor);
             }
 
-            // Set color
-            // newGameObject.GetComponent<MeshRenderer>().material.color = GetStepColor();
-
             // Return newly created object
             return newGameObject;
         }
@@ -427,9 +429,6 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             {
                 // Use factory method to create
                 spawnedObject = SpawnNewAnchoredObject(worldPos, worldRot, currentCloudAnchor);
-
-                // Update color
-                spawnedObjectMat = spawnedObject.GetComponent<MeshRenderer>().material;
             }
             else
             {
@@ -472,10 +471,11 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             Debug.Log(args.Message);
         }
 
-        protected struct DemoStepParams
+        protected bool TryGazeHitTest(out RaycastHit target)
         {
-            public Color StepColor { get; set; }
-            public string StepMessage { get; set; }
+            Camera mainCamera = Camera.main;
+
+            return Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out target);
         }
 
 
