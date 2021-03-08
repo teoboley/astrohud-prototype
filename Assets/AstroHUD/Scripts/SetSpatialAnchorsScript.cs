@@ -48,6 +48,9 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             Debug.Log("Starting Spatial Anchors session");
             await CloudManager.StartSessionAsync();
             Debug.Log("Spatial Anchors session started");
+
+            // add message listeners from server
+            serverConnection.messageReceived.AddListener(OnServerMessageReceived);
         }
 
         public override void OnDestroy()
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             CleanupSpawnedObjects();
         }
 
-        protected override void OnCloudAnchorLocated(AnchorLocatedEventArgs args)
+        /*protected override void OnCloudAnchorLocated(AnchorLocatedEventArgs args)
         {
             base.OnCloudAnchorLocated(args);
 
@@ -76,14 +79,15 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
                     Pose anchorPose = Pose.identity;
 
 #if UNITY_ANDROID || UNITY_IOS
-                    anchorPose = currentCloudAnchor.GetPose();
+                    anchorPose = currentCloudAnchor.G
+                    etPose();
 #endif
                     // HoloLens: The position will be set based on the unityARUserAnchor that was located.
                     SpawnOrMoveCurrentAnchoredObject(anchorPose.position, anchorPose.rotation);
                     // currentAppState = AppState.DemoStepDeleteFoundAnchor;
                 });
             }
-        }
+        }*/
 
         /// <summary>
         /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -105,14 +109,17 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             }
         }
 
-        public void addAnchorAtGazePoint()
+        public async Task addAnchorAtGazePoint()
         {
             RaycastHit hit;
             if (base.TryGazeHitTest(out hit)) {
+                // add local anchor
                 Quaternion rotation = Quaternion.AngleAxis(0, Vector3.up);
                 GameObject newGameObject = base.SpawnNewAnchoredObject(hit.point, rotation);
                 newGameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
-                // base.SaveObjectAnchorToCloudAsync(newGameObject);
+
+                // upload local anchor
+                await base.SaveObjectAnchorToCloudAsync(newGameObject);
             }
         }
 
@@ -134,7 +141,7 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
 #endif
             // HoloLens: The position will be set based on the unityARUserAnchor that was located.
 
-            SpawnOrMoveCurrentAnchoredObject(anchorPose.position, anchorPose.rotation);
+            // FIXME: SpawnOrMoveAnchoredObject(currentCloudAnchor, anchorPose.position, anchorPose.rotation);
 
             // currentAppState = AppState.DemoStepStopSession;
         }
@@ -146,6 +153,12 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             anchorObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
             currentAnchorId = string.Empty;
+        }
+
+        private void OnServerMessageReceived(IMessage message)
+        {
+            //Output message to the console
+            Debug.Log("Server Message Received - " + message.type);
         }
 
         //internal enum AppState

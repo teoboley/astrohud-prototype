@@ -32,6 +32,10 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         [SerializeField]
         [Tooltip("SpatialAnchorManager instance to use for this demo. This is required.")]
         private SpatialAnchorManager cloudManager = null;
+
+        [SerializeField]
+        [Tooltip("AstroHUDServerConnection instance to use for communication. This is required.")]
+        protected AstroHUDServerConnection serverConnection = null;
         #endregion // Unity Inspector Variables
 
         /// <summary>
@@ -421,11 +425,11 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
         /// </summary>
         /// <param name="worldPos">The world position.</param>
         /// <param name="worldRot">The world rotation.</param>
-        protected virtual void SpawnOrMoveCurrentAnchoredObject(Vector3 worldPos, Quaternion worldRot)
+        protected virtual void SpawnOrMoveAnchoredObject(GameObject anchoredObject, Vector3 worldPos, Quaternion worldRot)
         {
             // Create the object if we need to, and attach the platform appropriate
             // Anchor behavior to the spawned object
-            if (spawnedObject == null)
+            if (anchoredObject == null)
             {
                 // Use factory method to create
                 spawnedObject = SpawnNewAnchoredObject(worldPos, worldRot, currentCloudAnchor);
@@ -433,7 +437,7 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             else
             {
                 // Use factory method to move
-                MoveAnchoredObject(spawnedObject, worldPos, worldRot, currentCloudAnchor);
+                MoveAnchoredObject(anchoredObject, worldPos, worldRot, currentCloudAnchor);
             }
         }
 

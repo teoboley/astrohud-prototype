@@ -12,7 +12,11 @@ TrueTypeFontImporter:
   fontNames:
   - Inter
   fallbackFontReferences:
-  - {fileID: 12800000, guid: 50951df92a6da384d94b04307733f557, type: 3}
+  - {fileID: 12800000, guid: 18e2f2f330558e041851b5203d7f54cc, type: 3}
+  - {fileID: 12800000, guid: e79a4d2617bce5a4aa8f2c5428b1a152, type: 3}
+  - {fileID: 12800000, guid: 1c35a566a3bf67c4cbb98a66787e4017, type: 3}
+  - {fileID: 12800000, guid: 3859084a9e5ced84b8e6cd528f351fc7, type: 3}
+  - {fileID: 12800000, guid: 7d6b14bd4f179784ead2e6aa25c77158, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
