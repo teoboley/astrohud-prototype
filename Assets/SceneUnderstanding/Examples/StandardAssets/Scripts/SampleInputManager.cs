@@ -104,6 +104,10 @@
         [SerializeField]
         private SceneUnderstandingManager suManager;
 
+        [Tooltip("The destination game object container for the minimap")]
+        [SerializeField]
+        private GameObject minimapDestination;
+
         [Tooltip("Reference to the menu for default commands.")]
         [SerializeField]
         private SampleMenu menu;
@@ -293,7 +297,8 @@
             {
                 suMinimap = Instantiate(SuManager.SceneRoot);
                 suMinimap.name = "Minimap";
-                suMinimap.transform.position = Camera.main.transform.position + Camera.main.transform.forward;
+                suMinimap.transform.parent = minimapDestination.transform;
+                //suMinimap.transform.position = new Vector3(0, 0, 0); // Camera.main.transform.position + Camera.main.transform.forward;
                 suMinimap.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 
                 SuManager.SceneRoot.SetActive(false);
