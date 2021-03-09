@@ -299,7 +299,7 @@
                 suMinimap.name = "Minimap";
                 suMinimap.transform.parent = minimapDestination.transform;
                 //suMinimap.transform.position = new Vector3(0, 0, 0); // Camera.main.transform.position + Camera.main.transform.forward;
-                suMinimap.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+                suMinimap.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 
                 SuManager.SceneRoot.SetActive(false);
             }
