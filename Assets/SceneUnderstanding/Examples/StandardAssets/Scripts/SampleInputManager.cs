@@ -337,10 +337,16 @@
             }
         }
 
+        public async void ToggleMesh()
+        {
+            SuManager.SceneObjectRequestMode = RenderMode.Wireframe;
+            await SuManager.DisplayDataAsync();
+        }
+
         /// <summary>
         /// Saves SU data to storage.
         /// </summary>
-        private void SaveData()
+        public void SaveData()
         {
             var bytes = SuManager.SaveBytesToDiskAsync();
             var objs = SuManager.SaveObjsToDiskAsync();
