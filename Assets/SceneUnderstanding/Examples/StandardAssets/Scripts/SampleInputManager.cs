@@ -298,8 +298,8 @@
                 suMinimap = Instantiate(SuManager.SceneRoot);
                 suMinimap.name = "Minimap";
                 suMinimap.transform.parent = minimapDestination.transform;
-                //suMinimap.transform.position = new Vector3(0, 0, 0); // Camera.main.transform.position + Camera.main.transform.forward;
-                suMinimap.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                suMinimap.transform.position = new Vector3(0, 0, 0); // Camera.main.transform.position + Camera.main.transform.forward;
+                suMinimap.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
                 SuManager.SceneRoot.SetActive(false);
             }
@@ -308,7 +308,7 @@
         /// <summary>
         /// Toggles the mini map on and off.
         /// </summary>
-        private void MiniMapToggle()
+        public void MiniMapToggle()
         {
             if (suMinimap == null)
             {
@@ -342,6 +342,7 @@
             SuManager.SceneObjectRequestMode = RenderMode.Wireframe;
             await SuManager.DisplayDataAsync();
         }
+
 
         /// <summary>
         /// Saves SU data to storage.
