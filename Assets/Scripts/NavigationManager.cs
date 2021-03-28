@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class NavigationManager : MonoBehaviour
 {
@@ -33,25 +35,30 @@ public class NavigationManager : MonoBehaviour
     [Header("Artificial Landmark Layer")]
     public GameObject ArtificialLandmarkLayer;
 
+    [Header("Enabled material")]
+    public Material enabledControlMaterial;
+
+    [Header("Disabled material")]
+    public Material disabledControlMaterial;
+
     #endregion
 
     #region Resources
 
-    private string enabledMaterialLabel = "HolographicButtonPlateEnabled";
+    //private string enabledMaterialLabel = "HolographicButtonPlateEnabled";
 
-    private string disabledMaterialLabel = "HolographicButtonPlateDisabled";
+    //private string disabledMaterialLabel = "HolographicButtonPlateDisabled";
 
-    private Material enabledControl;
-
-    private Material disabledControl;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        enabledControl = Resources.Load(enabledMaterialLabel, typeof(Material)) as Material;
-        disabledControl = Resources.Load(disabledMaterialLabel, typeof(Material)) as Material;
+        ChevronLayer.SetActive(false);
+        AstronautLayer.SetActive(false);
+        LandmarkLayer.SetActive(false);
+        ArtificialLandmarkLayer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -85,26 +92,29 @@ public class NavigationManager : MonoBehaviour
     private void toggleLayer(GameObject control, GameObject layer)
     {
 
-        Debug.Log("Hey there");
+        Image controlRenderer = control.GetComponent<Image>();
 
-        Renderer controlRenderer = control.GetComponent<Renderer>();
-        // Renderer layerRenderer = layer.GetComponent<Renderer>();
+        Debug.Log(controlRenderer.material.name);
 
         if (control == null || layer == null)
         {
             return;
         }
 
-        if (controlRenderer.material.name == enabledMaterialLabel)
+        if (controlRenderer.material.name == enabledControlMaterial.name)
         {
-            controlRenderer.material = disabledControl;
+            Debug.Log("Switching to false");
+            controlRenderer.material = disabledControlMaterial;
             layer.SetActive(false);
         }
         else
         {
-            controlRenderer.material = enabledControl;
+            Debug.Log("Switching to true");
+            controlRenderer.material = enabledControlMaterial;
             layer.SetActive(true);
         }
+
+        Debug.Log(controlRenderer.material.name);
 
     }
     #endregion
