@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
 
 public class NavigationManager : MonoBehaviour
@@ -9,37 +11,32 @@ public class NavigationManager : MonoBehaviour
 
     #region Public Fields
 
-    [Header("Chevron Button")]
+    [Header("Layer Visibility Controls")]
     public GameObject ChevronControlButton;
-
-    [Header("Astronaut Button")]
     public GameObject AstronautControlButton;
-
-    [Header("Landmark Button")]
     public GameObject LandmarkControlButton;
-
-    [Header("Artificial Landmark Button")]
     public GameObject ArtificialLandmarkControlButton;
 
 
+    [Header("Layer Control Materials")]
+    public Material enabledControlMaterial;
+    public Material disabledControlMaterial;
 
-    [Header("Chevron Layer")]
+
+    [Header("Map Layers")]
     public GameObject ChevronLayer;
-
-    [Header("Astronaut Layer")]
     public GameObject AstronautLayer;
-
-    [Header("Landmark Layer")]
     public GameObject LandmarkLayer;
-
-    [Header("Artificial Landmark Layer")]
     public GameObject ArtificialLandmarkLayer;
 
-    [Header("Enabled material")]
-    public Material enabledControlMaterial;
 
-    [Header("Disabled material")]
-    public Material disabledControlMaterial;
+    [Header("Direction Labels")]
+    public TextMeshPro CompassLabel;
+    public TextMeshPro DegreeLabel;
+
+
+    [Header("Compass")]
+    public GameObject Compass;
 
     #endregion
 
@@ -64,7 +61,34 @@ public class NavigationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var v = Compass.GetComponent<Transform>().forward;
+        v.y = 0;
+        v.Normalize();
+        DegreeLabel.text = Math.Round(Vector3.Angle(v, Vector3.forward)).ToString() + "°";
 
+        if (Vector3.Angle(v, Vector3.forward) <= 45.0)
+        {
+            CompassLabel.text = "N";
+            
+        }
+        else if (Vector3.Angle(v, Vector3.right) <= 45.0)
+        {
+            CompassLabel.text = "E";
+
+            Debug.Log("East");
+        }
+        else if (Vector3.Angle(v, Vector3.back) <= 45.0)
+        {
+            CompassLabel.text = "S";
+
+            Debug.Log("South");
+        }
+        else
+        {
+            CompassLabel.text = "W";
+
+            Debug.Log("West");
+        }
     }
 
     #region Toggles
