@@ -38,14 +38,22 @@ public class TaskController : MonoBehaviour
 
     public GameObject SubtaskPrefab;
 
+    [Header("Spacers")]
+    public GameObject LineSpacer;
+    public GameObject BottomSpacer;
+    public GameObject Divider;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        LineSpacer.SetActive(false);
+        BottomSpacer.SetActive(false);
+        Divider.SetActive(false);
+        SubTaskContainer.SetActive(false);
+
         TaskDescription.text = taskTitle;
         TaskTime.text = taskTime;
-        SubTaskContainer.SetActive(false);
 
         for (int i = 0; i < subTaskItems.Length; i++)
         {
@@ -57,6 +65,10 @@ public class TaskController : MonoBehaviour
     public void toggle()
     {
         SubTaskContainer.SetActive(!isExpanded);
+        LineSpacer.SetActive(!isExpanded);
+        BottomSpacer.SetActive(!isExpanded);
+        Divider.SetActive(!isExpanded);
+
         isExpanded = !isExpanded;
     }
 }

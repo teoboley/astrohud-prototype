@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Description: {fileID: 8135651992129738126}
-  taskContent: Sutask one
 --- !u!1 &3417451279720525864
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +185,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 0.3
+  m_PreferredWidth: 0.325
   m_PreferredHeight: 0.08
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
