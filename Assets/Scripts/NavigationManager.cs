@@ -32,6 +32,7 @@ public class NavigationManager : MonoBehaviour
 
     [Header("Direction Labels")]
     public TextMeshPro CompassLabel;
+    public TextMeshProUGUI WristMenuCompassLabel;
     public TextMeshPro DegreeLabel;
 
 
@@ -68,27 +69,27 @@ public class NavigationManager : MonoBehaviour
 
         if (Vector3.Angle(v, Vector3.forward) <= 45.0)
         {
-            CompassLabel.text = "N";
+            UpdateText("N");
             
         }
         else if (Vector3.Angle(v, Vector3.right) <= 45.0)
         {
-            CompassLabel.text = "E";
-
-            Debug.Log("East");
+            UpdateText("E");
         }
         else if (Vector3.Angle(v, Vector3.back) <= 45.0)
         {
-            CompassLabel.text = "S";
-
-            Debug.Log("South");
+            UpdateText("S");
         }
         else
         {
-            CompassLabel.text = "W";
-
-            Debug.Log("West");
+            UpdateText("W");
         }
+    }
+
+    void UpdateText(string text)
+    {
+        WristMenuCompassLabel.text = text;
+        CompassLabel.text = text;
     }
 
     #region Toggles
