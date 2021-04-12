@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.microsoft.azure.spatial-anchors-sdk.core": "file:C:/Users/teo75/Downloads/com.microsoft.azure.spatial-anchors-sdk.core-2.7.2.tgz",
-    "com.microsoft.azure.spatial-anchors-sdk.windows": "file:C:/Users/teo75/Downloads/com.microsoft.azure.spatial-anchors-sdk.windows-2.7.2.tgz",
+    "com.microsoft.azure.spatial-anchors-sdk.core": "2.7.2",
+    "com.microsoft.azure.spatial-anchors-sdk.windows": "2.7.2",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ide.rider": "1.1.4",
@@ -50,6 +50,13 @@
       "url": "https://npm.cloudsmith.io/jillejr/newtonsoft-json-for-unity",
       "scopes": [
         "jillejr.newtonsoft.json-for-unity"
+      ]
+    },
+    {
+      "name": "Azure Mixed Reality Services",
+      "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM",
+      "scopes": [
+        "com.microsoft.azure.spatial-anchors-sdk"
       ]
     }
   ]
