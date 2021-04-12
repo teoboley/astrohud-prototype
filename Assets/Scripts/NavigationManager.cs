@@ -39,6 +39,9 @@ public class NavigationManager : MonoBehaviour
     [Header("Compass")]
     public GameObject Compass;
 
+    [Header("Chevron")]
+    public GameObject Chevron;
+
     #endregion
 
     #region Resources
@@ -65,7 +68,12 @@ public class NavigationManager : MonoBehaviour
         var v = Compass.GetComponent<Transform>().forward;
         v.y = 0;
         v.Normalize();
-        DegreeLabel.text = Math.Round(Vector3.Angle(v, Vector3.forward)).ToString() + "°";
+
+        var newDegree = (float) Math.Round(Vector3.Angle(v, Vector3.forward));
+
+        DegreeLabel.text = newDegree.ToString() + "°";
+
+      //  Chevron.transform.rotation = Quaternion.Euler(0, (float) newDegree, 0);
 
         if (Vector3.Angle(v, Vector3.forward) <= 45.0)
         {
