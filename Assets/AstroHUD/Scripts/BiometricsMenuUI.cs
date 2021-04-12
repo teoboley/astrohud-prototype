@@ -54,6 +54,7 @@ public class BiometricsMenuUI : MonoBehaviour
             Debug.Log("Received system state update within biometrics menu script");
             SystemStateMessage state = new SystemStateMessage(message);
             UpdateBPM(state.payload.lifeSupportState.suitState.heartRate);
+            UpdateKCAL(state.payload.lifeSupportState.bodyState.caloriesBurned);
         }
     }
 
