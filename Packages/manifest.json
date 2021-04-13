@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "com.microsoft.azure.spatial-anchors-sdk.core": "2.7.2",
+    "com.microsoft.azure.spatial-anchors-sdk.windows": "2.7.2",
+    "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ide.rider": "1.1.4",
     "com.unity.ide.vscode": "1.2.2",
@@ -8,6 +11,7 @@
     "com.unity.timeline": "1.2.17",
     "com.unity.ugui": "1.0.0",
     "com.unity.xr.windowsmr.metro": "4.2.3",
+    "jillejr.newtonsoft.json-for-unity": "13.0.102",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -39,5 +43,21 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "jilleJr",
+      "url": "https://npm.cloudsmith.io/jillejr/newtonsoft-json-for-unity",
+      "scopes": [
+        "jillejr.newtonsoft.json-for-unity"
+      ]
+    },
+    {
+      "name": "Azure Mixed Reality Services",
+      "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM",
+      "scopes": [
+        "com.microsoft.azure.spatial-anchors-sdk"
+      ]
+    }
+  ]
 }
