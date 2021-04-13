@@ -344,6 +344,7 @@ public struct SystemStateMessagePayload
 {
     public LifeSupportState lifeSupportState;
     //public NavigationState navigationState;
+    public MissionState missionState;
 }
 
 [Serializable]
@@ -363,15 +364,15 @@ public struct BodyState {
 [Serializable]
 public struct SuitState {
     // Milliampere hours
-    public int currentBattery;
+    public float currentBattery;
     // Milliampere hours
-    public int maxBattery;
+    public float maxBattery;
     // Milliampere hours per minute
     public float batteryDrain;
     // Litres of liquid?
-    public int maxOxygen;
+    public float maxOxygen;
     // Litres of liquid?
-    public int currentOxygen;
+    public float currentOxygen;
     // PSI
     public int tankPressure;
     // Litres per minute
@@ -384,4 +385,13 @@ public struct SuitState {
     public int heartRate;
     // PSI
     public int suitPressure;
+}
+
+[Serializable]
+public struct MissionState
+{
+    // seconds
+    public int totalMissionLength;
+    // seconds
+    public int missionTimeElapsed;
 }
