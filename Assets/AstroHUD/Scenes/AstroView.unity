@@ -11248,6 +11248,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 186491399400498807, guid: 1c48cfb0e3669f240943a4142073cca4,
+        type: 3}
+      propertyPath: taskTitle
+      value: Repair out wiring
+      objectReference: {fileID: 0}
     - target: {fileID: 186491399494033782, guid: 1c48cfb0e3669f240943a4142073cca4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -11682,6 +11687,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325569834536914054, guid: 1c48cfb0e3669f240943a4142073cca4,
+        type: 3}
+      propertyPath: taskTitle
+      value: Navigate to sampling site
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325569834536914054, guid: 1c48cfb0e3669f240943a4142073cca4,
+        type: 3}
+      propertyPath: subTaskItems.Array.data[0]
+      value: Collect tools from lander
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325569834536914054, guid: 1c48cfb0e3669f240943a4142073cca4,
+        type: 3}
+      propertyPath: subTaskItems.Array.data[1]
+      value: Collect dust samples
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325569834536914054, guid: 1c48cfb0e3669f240943a4142073cca4,
+        type: 3}
+      propertyPath: subTaskItems.Array.data[2]
+      value: Return to lander
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325569834536914054, guid: 1c48cfb0e3669f240943a4142073cca4,
+        type: 3}
+      propertyPath: subTaskItems.Array.data[3]
+      value: Seal samples
       objectReference: {fileID: 0}
     - target: {fileID: 1325569834536914073, guid: 1c48cfb0e3669f240943a4142073cca4,
         type: 3}
