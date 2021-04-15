@@ -109,18 +109,19 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             }
         }
 
-        public async Task addAnchorAtGazePoint()
+        public void AddAnchorAtGazePoint()
         {
             RaycastHit hit;
             if (base.TryGazeHitTest(out hit)) {
+                Debug.Log("YES");
                 // add local anchor
                 Quaternion rotation = Quaternion.AngleAxis(0, Vector3.up);
                 GameObject newGameObject = base.SpawnNewAnchoredObject(hit.point, rotation);
                 newGameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
 
                 // upload local anchor
-                await base.SaveObjectAnchorToCloudAsync(newGameObject);
-            }
+                 base.SaveObjectAnchorToCloudAsync(newGameObject);
+            } 
         }
 
         protected override async Task OnSaveCloudAnchorSuccessfulAsync(GameObject anchorObject)
@@ -344,7 +345,7 @@ namespace Microsoft.Azure.SpatialAnchors.Unity.Examples
             //    anchorsToFind.Add(currentAnchorId);
             //}
 
-            SetAnchorIdsToLocate(anchorsToFind);
+           // SetAnchorIdsToLocate(anchorsToFind);
         }
     }
 }
