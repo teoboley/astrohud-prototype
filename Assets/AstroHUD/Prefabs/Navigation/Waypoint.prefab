@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427ad7f93cd275545bddb14b37fae2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 2
   waypointLabel: MORTEUS
   NameLabel: {fileID: 6193413989642873622}
   DistanceLabel: {fileID: 6193413991102558795}
