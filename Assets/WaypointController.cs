@@ -5,15 +5,23 @@ using TMPro;
 
 public class WaypointController : MonoBehaviour
 {
+    [Header("Configuration")]
     public WaypointType type;
     public string waypointLabel;
+    public bool isMicroNavigation;
 
+    [Header("Render Targets")]
     public TextMeshPro NameLabel;
     public TextMeshPro DistanceLabel;
     public TextMeshPro TravelTimeLabel;
 
     public GameObject HeadObject;
     public GameObject TailObject;
+
+
+    [Header("Styling")]
+    public Sprite MacroNavigationSprite;
+    public Sprite MicroNavigationSprite;
 
     public Material PrimaryMaterial;
     public Material SecondaryMaterial;
@@ -34,6 +42,8 @@ public class WaypointController : MonoBehaviour
     void Start()
     {
         HeadObject.GetComponent<SpriteRenderer>().color = GetColor();
+        HeadObject.GetComponent<SpriteRenderer>().sprite = GetSprite();
+
         TailObject.GetComponent<MeshRenderer>().sharedMaterial = GetMaterial();
         NameLabel.text = waypointLabel;
     }
@@ -67,5 +77,15 @@ public class WaypointController : MonoBehaviour
             default:
                 return PingColor;
         }
+    }
+
+    private Sprite GetSprite()
+    {
+        if (isMicroNavigation)
+        {
+            return MicroNavigationSprite;
+        }
+
+        return MacroNavigationSprite;
     }
 }

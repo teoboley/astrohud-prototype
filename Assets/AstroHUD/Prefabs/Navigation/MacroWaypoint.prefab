@@ -681,11 +681,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   waypointLabel: MORTEUS
+  isMicroNavigation: 0
   NameLabel: {fileID: 6193413989642873622}
   DistanceLabel: {fileID: 6193413991102558795}
   TravelTimeLabel: {fileID: 6193413989145799063}
   HeadObject: {fileID: 2939606685502757891}
   TailObject: {fileID: 6193413991074111979}
+  MacroNavigationSprite: {fileID: 21300000, guid: c5c7d06c4f3912b4788090ba2a12353c,
+    type: 3}
+  MicroNavigationSprite: {fileID: 21300000, guid: 4b31abbe3516e5a4b9ff146c46fab4cf,
+    type: 3}
   PrimaryMaterial: {fileID: 2100000, guid: bdf03059c12a24340b0a1e5366e4a830, type: 2}
   SecondaryMaterial: {fileID: 2100000, guid: d445c4aec5daa20419a24e8f775b8f12, type: 2}
   PingMaterial: {fileID: 2100000, guid: f2a92dea66930694fb4c99fc4c947ed7, type: 2}
