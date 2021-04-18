@@ -19,6 +19,10 @@ public class WaypointController : MonoBehaviour
     public Material SecondaryMaterial;
     public Material PingMaterial;
 
+    public Color PrimaryColor;
+    public Color SecondaryColor;
+    public Color PingColor;
+
 
     public enum WaypointType
     {
@@ -29,9 +33,8 @@ public class WaypointController : MonoBehaviour
 
     void Start()
     {
-        var material = GetMaterial();
-        HeadObject.GetComponent<MeshRenderer>().sharedMaterial = material;
-        TailObject.GetComponent<MeshRenderer>().sharedMaterial = material;
+        HeadObject.GetComponent<SpriteRenderer>().color = GetColor();
+        TailObject.GetComponent<MeshRenderer>().sharedMaterial = GetMaterial();
         NameLabel.text = waypointLabel;
     }
 
@@ -50,6 +53,19 @@ public class WaypointController : MonoBehaviour
                 return SecondaryMaterial;
             default:
                 return PingMaterial;
+        }
+    }
+
+    private Color GetColor()
+    {
+        switch (type)
+        {
+            case WaypointType.Primary:
+                return PrimaryColor;
+            case WaypointType.Secondary:
+                return SecondaryColor;
+            default:
+                return PingColor;
         }
     }
 }
