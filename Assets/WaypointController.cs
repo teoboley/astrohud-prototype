@@ -53,6 +53,11 @@ public class WaypointController : MonoBehaviour
         
     }
 
+    public void SetLabel(string text)
+    {
+        NameLabel.text = text;
+    }
+
     private Material GetMaterial()
     {
         switch(type)

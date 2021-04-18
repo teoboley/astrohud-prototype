@@ -9,7 +9,7 @@ public class WaypointManager : MonoBehaviour
     public LineRenderer LineRenderer;
 
 
-    private List<GameObject> Waypoints = new List<GameObject>();
+    public List<GameObject> Waypoints = new List<GameObject>();
     private bool shouldUpdate = false;
     private LineRenderer lineRenderer;
 
