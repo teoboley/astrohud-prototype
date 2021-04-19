@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Microsoft.MixedReality.Toolkit;
 
 public class WaypointController : MonoBehaviour
 {
@@ -50,7 +51,10 @@ public class WaypointController : MonoBehaviour
 
     void Update()
     {
-        
+        if (CoreServices.InputSystem.GazeProvider.GazeTarget)
+        {
+            Debug.Log("User gaze is currently over game object: " + waypointLabel);
+    }
     }
 
     public void SetLabel(string text)

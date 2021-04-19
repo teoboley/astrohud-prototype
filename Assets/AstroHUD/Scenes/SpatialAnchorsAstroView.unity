@@ -3907,7 +3907,7 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 1
+    alignment: 0
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
@@ -3921,7 +3921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946192355}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12687095, y: -0.6415212, z: -1.9774}
+  m_LocalPosition: {x: -0.12687095, y: -1.1, z: -1.9774}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 207396684}
@@ -6332,6 +6332,7 @@ MonoBehaviour:
     type: 3}
   NewWaypointRoot: {fileID: 1158332362287446861}
   LineRenderer: {fileID: 946192356}
+  groundLevel: 0
   Waypoints:
   - {fileID: 1584275047}
   - {fileID: 669553675}
@@ -11135,7 +11136,7 @@ PrefabInstance:
     - target: {fileID: 6193413990253540124, guid: 47a7db0bb51eb6c48a72207145f3956b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.20963767
+      value: 0.658
       objectReference: {fileID: 0}
     - target: {fileID: 6193413990253540124, guid: 47a7db0bb51eb6c48a72207145f3956b,
         type: 3}

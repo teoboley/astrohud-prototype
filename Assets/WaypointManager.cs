@@ -7,6 +7,7 @@ public class WaypointManager : MonoBehaviour
     public GameObject WaypointPrefab;
     public GameObject NewWaypointRoot;
     public LineRenderer LineRenderer;
+    public float groundLevel = 0.3f;
 
 
     public List<GameObject> Waypoints = new List<GameObject>();
@@ -48,11 +49,14 @@ public class WaypointManager : MonoBehaviour
 
         foreach (GameObject waypoint in Waypoints)
         {
-            waypoint.transform.position = new Vector3(waypoint.transform.position.x, -0.6f, transform.position.z);
+            waypoint.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            waypoint.transform.position = new Vector3(waypoint.transform.position.x, groundLevel, waypoint.transform.position.z);
             waypointPositions.Add(waypoint.transform.position);
         }
 
         LineRenderer.positionCount = waypointPositions.Count;
         LineRenderer.SetPositions(waypointPositions.ToArray());
+        
+       
     }
 }
