@@ -385,3 +385,32 @@ public struct SuitState {
     // PSI
     public int suitPressure;
 }
+
+public class TaskListMessage : Message<TaskListMessagePayload>
+{
+    public TaskListMessage(IMessage message) : base(message) { }
+
+    public override TaskListMessagePayload PayloadFromJson(JRaw payload)
+    {
+        return JsonConvert.DeserializeObject<TaskListMessagePayload>(payload.ToString());
+    }
+
+    public static bool Is(IMessage message)
+    {
+        return message.type == "TASK_LIST";
+    }
+}
+
+[Serializable]
+public struct TaskListMessagePayload
+{
+    public List<TaskState> tasks;
+}
+
+[Serializable]
+public struct TaskState
+{
+    public string description;
+    public string time;
+    public string[] subtasks;
+}
