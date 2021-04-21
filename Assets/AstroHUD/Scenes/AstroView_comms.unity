@@ -9713,8 +9713,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateLinkedTransform: 0
-  moveLerpTime: 0.05
-  rotateLerpTime: 0.05
+  moveLerpTime: 0.025
+  rotateLerpTime: 0.025
   scaleLerpTime: 0
   maintainScale: 1
   smoothing: 1

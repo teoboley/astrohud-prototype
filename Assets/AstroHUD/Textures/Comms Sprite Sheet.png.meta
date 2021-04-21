@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 2908195217140079952
     second: Comms Frame
+  - first:
+      213: 7677609587150436768
+    second: Active Indicator
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -107,7 +110,7 @@ TextureImporter:
         serializedVersion: 2
         x: 54
         y: 117
-        width: 283
+        width: 246
         height: 192
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -118,6 +121,27 @@ TextureImporter:
       bones: []
       spriteID: 05ddf17442cfb5820800000000000000
       internalID: 2908195217140079952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Active Indicator
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 280
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a93c36ed395c8a60800000000000000
+      internalID: 7677609587150436768
       vertices: []
       indices: 
       edges: []
