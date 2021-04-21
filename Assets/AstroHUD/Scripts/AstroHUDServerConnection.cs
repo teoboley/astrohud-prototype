@@ -424,3 +424,32 @@ public struct MissionState
     // seconds
     public int missionTimeElapsed;
 }
+
+public class CommsListMessage : Message<CommsListMessagePayload>
+{
+    public CommsListMessage(IMessage message) : base(message) { }
+
+    public override CommsListMessagePayload PayloadFromJson(JRaw payload)
+    {
+        return JsonConvert.DeserializeObject<CommsListMessagePayload>(payload.ToString());
+    }
+
+    public static bool Is(IMessage message)
+    {
+        return message.type == "COMMS_LIST";
+    }
+}
+
+[Serializable]
+public struct CommsListMessagePayload
+{
+    public List<AstronautVoiceIndicatorState> voiceIndicators;
+}
+
+[Serializable]
+public struct AstronautVoiceIndicatorState
+{
+    public string astronautName;
+    public bool active;
+    public string color;
+}

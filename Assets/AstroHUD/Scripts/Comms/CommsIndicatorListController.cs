@@ -17,6 +17,13 @@ public class CommsIndicatorListController : MonoBehaviour
         public string name;
         public bool active;
         public Color color;
+
+        public AstronautIndicatorData(string name, bool active, Color color)
+        {
+            this.name = name;
+            this.active = active;
+            this.color = color;
+        }
     }
 
     // Start is called before the first frame update
