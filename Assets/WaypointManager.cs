@@ -6,9 +6,11 @@ public class WaypointManager : MonoBehaviour
 {
     public GameObject WaypointPrefab;
     public GameObject NewWaypointRoot;
+    public GameObject AdminPanel;
     public LineRenderer LineRenderer;
     public float groundLevel = 0.3f;
 
+    public bool adminEnabled = false;
 
     public List<GameObject> Waypoints = new List<GameObject>();
     private bool shouldUpdate = false;
@@ -17,8 +19,11 @@ public class WaypointManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    //    var line = LineRenderer.gameObject;
-    //  line.transform.position = new Vector3(line.transform.position.x, -0.6f, line.transform.position.z);
+        if (!adminEnabled)
+        {
+            AdminPanel.SetActive(false);
+            shouldUpdate = true;
+        }
     }
 
     // Update is called once per frame
@@ -39,7 +44,7 @@ public class WaypointManager : MonoBehaviour
         waypoint.transform.position = NewWaypointRoot.transform.position;
 
         Waypoints.Add(waypoint);
-        //shouldUpdate = true;
+        shouldUpdate = !adminEnabled;
     }
 
     public void RenderWaypointLines()
@@ -56,7 +61,5 @@ public class WaypointManager : MonoBehaviour
 
         LineRenderer.positionCount = waypointPositions.Count;
         LineRenderer.SetPositions(waypointPositions.ToArray());
-        
-       
     }
 }

@@ -58,7 +58,8 @@ public class BiometricsMenuUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<Sprite> sprites = AssetDatabase.LoadAllAssetsAtPath("Assets/AstroHUD/Textures/Biometrics Sprite Sheet.png").Where(q => q is Sprite).Cast<Sprite>().ToList();
+        List<Sprite> sprites = Resources.LoadAll<Sprite>("Textures/Biometrics Sprite Sheet.png").ToList();
+//        List <Sprite> sprites = AssetDatabase.LoadAllAssetsAtPath("Assets/AstroHUD/Textures/Biometrics Sprite Sheet.png").Where(q => q is Sprite).Cast<Sprite>().ToList();
         positiveDialSprite = sprites.Find(s => s.name.Equals("Dial_Green"));
         neutralDialSprite = sprites.Find(s => s.name.Equals("Dial_Blue"));
         negativeDialSprite = sprites.Find(s => s.name.Equals("Dial_Red"));
