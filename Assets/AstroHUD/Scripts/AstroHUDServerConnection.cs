@@ -36,7 +36,7 @@ public class AstroHUDServerConnection : MonoBehaviour
     // The port number for the remote device.  
     //private IPAddress ipAddress = IPAddress.Parse("192.168.1.21");
     //private const int port = 5000;
-    private Uri uri = new Uri("ws://192.168.1.21:5000");
+    private Uri uri = new Uri("ws://192.168.1.25:5000");
 
     // ManualResetEvent instances signal completion.  
     //private static ManualResetEvent connectDone =
