@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class AstronautCardController : MonoBehaviour
 {
     [Header("Render Targets")]
+    public GameObject ContentContainer;
     public TextMeshProUGUI AstronautName;
     public TextMeshProUGUI TaskDescription;
     public Image HeartRate;
@@ -28,6 +29,8 @@ public class AstronautCardController : MonoBehaviour
     public Status oxygenStatus;
     public Status temperatureStatus;
 
+    public float minVisibleDistance = .5f;
+
     [Header("Styling")]
     public Color positiveStatusColor;
     public Color warningStatusColor;
@@ -38,6 +41,11 @@ public class AstronautCardController : MonoBehaviour
         Positive,
         Warning,
         Danger
+    }
+
+    void Update()
+    {
+        CheckDistance();
     }
 
     // Start is called before the first frame update
@@ -64,5 +72,11 @@ public class AstronautCardController : MonoBehaviour
             default:
                 return dangerStatusColor;
         }
+    }
+
+    private void CheckDistance()
+    {
+        var currentPosition = GetComponent<Transform>().position;
+        ContentContainer.SetActive(Vector3.Distance(currentPosition, Camera.main.transform.position) < minVisibleDistance);
     }
 }
