@@ -53,7 +53,7 @@ public class WaypointController : MonoBehaviour
     {
         if (CoreServices.InputSystem.GazeProvider.GazeTarget)
         {
-            Debug.Log("User gaze is currently over game object: " + waypointLabel);
+            //Debug.Log("User gaze is currently over game object: " + waypointLabel);
     }
     }
 
