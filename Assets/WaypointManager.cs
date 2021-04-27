@@ -50,7 +50,7 @@ public class WaypointManager : MonoBehaviour
         foreach (GameObject waypoint in Waypoints)
         {
             waypoint.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-            waypoint.transform.position = new Vector3(waypoint.transform.position.x, groundLevel, waypoint.transform.position.z);
+           // waypoint.transform.position = new Vector3(waypoint.transform.position.x, groundLevel, waypoint.transform.position.z);
             waypointPositions.Add(waypoint.transform.position);
         }
 

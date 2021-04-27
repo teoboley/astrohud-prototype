@@ -51,17 +51,17 @@ public class BiometricsMenuUI : MonoBehaviour
     public Image bqDialImage;
     public TextMeshProUGUI bqValueLabel;
 
-    private Sprite positiveDialSprite;
-    private Sprite neutralDialSprite;
-    private Sprite negativeDialSprite;
+    public Sprite positiveDialSprite;
+    public Sprite neutralDialSprite;
+    public Sprite negativeDialSprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        List<Sprite> sprites = AssetDatabase.LoadAllAssetsAtPath("Assets/AstroHUD/Textures/Biometrics Sprite Sheet.png").Where(q => q is Sprite).Cast<Sprite>().ToList();
-        positiveDialSprite = sprites.Find(s => s.name.Equals("Dial_Green"));
-        neutralDialSprite = sprites.Find(s => s.name.Equals("Dial_Blue"));
-        negativeDialSprite = sprites.Find(s => s.name.Equals("Dial_Red"));
+        //List<Sprite> sprites = AssetDatabase.LoadAllAssetsAtPath("Assets/AstroHUD/Textures/Biometrics Sprite Sheet.png").Where(q => q is Sprite).Cast<Sprite>().ToList();
+        //positiveDialSprite = sprites.Find(s => s.name.Equals("Dial_Green"));
+        //neutralDialSprite = sprites.Find(s => s.name.Equals("Dial_Blue"));
+        //negativeDialSprite = sprites.Find(s => s.name.Equals("Dial_Red"));
 
         Debug.Log("Listening for server message event");
         serverConnection.messageReceived.AddListener(

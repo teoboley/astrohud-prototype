@@ -714,8 +714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afd5316c63705643b3daba5a6e923bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTetherWhenManipulating: 0
-  IsBoundsHandles: 0
+  ShowTetherWhenManipulating: 1
+  IsBoundsHandles: 1
 --- !u!114 &5007266623724448712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,8 +744,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostTransform: {fileID: 6193413990253540124}
-  manipulationType: 1
-  twoHandedManipulationType: 7
+  manipulationType: 2
+  twoHandedManipulationType: 1
   allowFarManipulation: 1
   useForcesForNearManipulation: 0
   oneHandRotationModeNear: 1

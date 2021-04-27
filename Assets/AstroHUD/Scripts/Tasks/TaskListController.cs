@@ -20,9 +20,11 @@ public class TaskListController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SetTaskItems(new List<TaskController.Task> {
-        //    new TaskController.Task("Task from TLC", "00:00", new string[] { "A Subtask" })
-        //});
+        SetTaskItems(new List<TaskController.Task> {
+            new TaskController.Task("Navigate to Lander", "00:00", new string[] { "A Subtask" }),
+             new TaskController.Task("Grab tools", "00:15", new string[] { "A Subtask" }),
+              new TaskController.Task("Return to base", "00:30", new string[] { "A Subtask" })
+        });
     }
 
     public void SetTaskItems(List<TaskController.Task> newTaskItems)

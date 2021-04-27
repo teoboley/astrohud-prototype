@@ -29,7 +29,13 @@ public class CommsIndicatorListController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        astronautIndicatorItems = new List<AstronautIndicatorData> {
+            new AstronautIndicatorData("TEO", false, new Color(57, 221, 5)),
+                        new AstronautIndicatorData("COBB", true, new Color(5, 150, 221)),
+                                    new AstronautIndicatorData("HQ", false, new Color(221, 214, 5))
+
+        };
+        UpdateView();
     }
 
     public void SetIndicatorItems(List<AstronautIndicatorData> astronautIndicatorItems)
